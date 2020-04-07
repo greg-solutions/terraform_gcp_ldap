@@ -22,8 +22,12 @@ variable "disk_name" {
   description = "(Optional) Custom disk name"
   default = "ldap-disk"
 }
+variable "node_disk_size" {
+  description = "(Optional) Custom disk size for node"
+  default = 10
+}
 variable "disk_size" {
-  description = "(Optional) Custom disk size"
+  description = "(Optional) Custom disk size for nfs"
   default = 10
 }
 variable "disk_block_size" {

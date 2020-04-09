@@ -21,6 +21,8 @@ resource "google_compute_instance" "instance" {
     device_name = google_compute_disk.disk.name
   }
   tags = var.tag
+
+  depends_on = [google_compute_disk.disk]
 }
 
 resource "google_compute_disk" "disk" {
@@ -45,6 +47,8 @@ resource "google_compute_firewall" "ldap_access" {
     ports = ["389"]
   }
   target_tags = var.tag
+
+  depends_on = [data.google_compute_subnetwork.ip_cidr]
 }
 
 resource "google_compute_firewall" "ssh_access" {
@@ -58,4 +62,6 @@ resource "google_compute_firewall" "ssh_access" {
     ports = ["22"]
   }
   target_tags = var.tag
+
+  depends_on = [data.google_compute_subnetwork.ip_cidr]
 }

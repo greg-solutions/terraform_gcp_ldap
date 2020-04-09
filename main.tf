@@ -48,7 +48,7 @@ resource "google_compute_firewall" "ldap_access" {
   }
   target_tags = var.tag
 
-  depends_on = [data.google_compute_subnetwork.ip_cidr]
+  depends_on = [google_compute_instance.instance]
 }
 
 resource "google_compute_firewall" "ssh_access" {
@@ -63,5 +63,5 @@ resource "google_compute_firewall" "ssh_access" {
   }
   target_tags = var.tag
 
-  depends_on = [data.google_compute_subnetwork.ip_cidr]
+  depends_on = [google_compute_instance.instance]
 }
